@@ -7,6 +7,10 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 ADD . /app
 
+RUN apt-get install bash -y
+
+USER root
+
 # Install any needed packages specified in requirements.txt
 RUN pip install pandas numpy sklearn scipy
 
@@ -16,4 +20,4 @@ EXPOSE 80
 # Define environment variable
 ENV NAME World
 
-CMD ["sleep infinity"]
+CMD ["tail", "-f", "/dev/null"]
